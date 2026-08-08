@@ -116,7 +116,7 @@ const sceneMeta = {
   ending_friend:{emoji:"🦖",bg:"scene-ending"},
 };
 async function loadStory(){ if(!story){const r=await fetch('story.json');story=await r.json();} }
-function goHome(){ window.location.href='../index.html'; }
+function goHome(){ window.location.href='../../index.html'; }
 async function startGame(){
   await loadStory();
   document.getElementById('titleScreen').classList.add('fade-out');
