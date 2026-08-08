@@ -18,8 +18,24 @@ STORIES_DIR = os.path.dirname(__file__)
 NARRATOR_VOICE = "pt-PT-RaquelNeural"
 CHOICE_VOICE = "pt-PT-DuarteNeural"
 
+# Words that cause TTS mispronunciation due to accent/encoding issues.
+# "Pokémon" (with é, U+00E9) causes edge_tts to say "símbolo de copyright"
+# because byte 0xA9 (second byte of UTF-8 é) is © in Latin-1.
+# Using the unaccented form still pronounces correctly in Portuguese.
+TTS_REPLACEMENTS = {
+    "Pokémon": "Pokemon",
+    "pokémon": "pokemon",
+}
+
+
+def sanitize_for_tts(text: str) -> str:
+    for old, new in TTS_REPLACEMENTS.items():
+        text = text.replace(old, new)
+    return text
+
 
 async def generate_segment(text: str, voice: str, output_path: str):
+    text = sanitize_for_tts(text)
     communicate = edge_tts.Communicate(text, voice)
     await communicate.save(output_path)
 
@@ -60,8 +76,7 @@ async def generate_story(story_name: str):
 
         for i, choice in enumerate(choices):
             choice_path = os.path.join(audio_dir, f"{node_id}_choice{i}.mp3")
-            if not os.path.exists(choice_path):
-                tasks.append(("choice", node_id, choice["text"], CHOICE_VOICE, choice_path))
+            tasks.append(("choice", node_id, choice["text"], CHOICE_VOICE, choice_path))
 
     print(f"\n  Story: {story_name} ({len(tasks)} segments to generate)")
     for kind, node_id, text, voice, path in tasks:
