@@ -1,0 +1,97 @@
+{
+  "title": "A Floresta dos Dinossauros",
+  "start": "start",
+  "prompt_text": "O que queres fazer?",
+  "nodes": {
+    "start": {
+      "narration": "Era uma vez, num lugar muito muito longe, uma floresta cheia de dinossauros. Tu és um pequeno explorador chamado André, e hoje vais descobrir os segredos desta floresta. Mas atenção! Nem todos os dinossauros são simpáticos. Estás pronto para a aventura?",
+      "choices": [
+        {"text": "Sim! Vamos lá!", "icon": "👍", "next": "crossroads"},
+        {"text": "Tenho um pouco de medo...", "icon": "😨", "next": "brave"}
+      ]
+    },
+    "brave": {
+      "narration": "É normal ter medo! Mas o André é um explorador corajoso. Respira fundo... está pronto? A floresta está à tua espera!",
+      "choices": [
+        {"text": "Estou pronto!", "icon": "💪", "next": "crossroads"}
+      ]
+    },
+    "crossroads": {
+      "narration": "Chegas a um caminho que se divide em dois. Para a esquerda, ouves o som de água a cair. Para a direita, vês pegadas enormes no chão. Que caminho queres seguir?",
+      "choices": [
+        {"text": "Ir para a água", "icon": "💧", "next": "waterfall"},
+        {"text": "Seguir as pegadas", "icon": "👣", "next": "footprints"}
+      ]
+    },
+    "waterfall": {
+      "narration": "Encontras uma cascata lindíssima! E ali, a beber água, está um brontossauro amarelo. Ele olha para ti com olhos grandes e simpáticos. Parece que quer ser teu amigo!",
+      "choices": [
+        {"text": "Acamar o brontossauro", "icon": "🤚", "next": "bronto_friend"},
+        {"text": "Esconder-se atrás de uma árvore", "icon": "🌳", "next": "bronto_hide"}
+      ]
+    },
+    "bronto_friend": {
+      "narration": "O brontossauro baixa a cabeça para que o possas acarinhar. É suave e morno! Ele faz um som feliz: Mmmmm. Agora tens um amigo gigante para te proteger na floresta!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "cave"}
+      ]
+    },
+    "bronto_hide": {
+      "narration": "Escondes-te atrás da árvore, mas o brontossauro cheira-te e dá uma risadinha. Ele não é perigoso! Sai de trás da árvore e faz-lhe um aceno. Ele acena de volta com a cabeça gigante!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "cave"}
+      ]
+    },
+    "footprints": {
+      "narration": "Segues as pegadas enormes pela floresta. De repente, as pegadas param! E ali à tua frente está um T-Rex... mas ele não está a olhar para ti. Está a tentar alcançar uma fruta no topo de uma árvore!",
+      "choices": [
+        {"text": "Ajudar o T-Rex", "icon": "🤝", "next": "trex_help"},
+        {"text": "Fugir silenciosamente", "icon": "🏃", "next": "trex_run"}
+      ]
+    },
+    "trex_help": {
+      "narration": "Empurra a árvore com toda a tua força e a fruta cai! O T-Rex apanha-a e faz um sorriso enorme com os dentes. Ele faz um rugido feliz: Rraaah! Obrigado! Agora o T-Rex é teu amigo!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "cave"}
+      ]
+    },
+    "trex_run": {
+      "narration": "Começas a correr o mais rápido que podes! Mas tropeças num tronco e cais. O T-Rex ouve o barulho e vira-se... mas em vez de te perseguir, oferece-te a fruta que finalmente conseguiu apanhar! Ele é simpático!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "cave"}
+      ]
+    },
+    "cave": {
+      "narration": "Chegas a uma caverna misteriosa. Dentro dela, vês um brilho dourado. Pode ser um tesouro! Mas também ouves um ressonar muito forte. Algo está a dormir lá dentro.",
+      "choices": [
+        {"text": "Entrar na caverna", "icon": "🕳️", "next": "treasure"},
+        {"text": "Ir embora", "icon": "🚪", "next": "ending_coward"}
+      ]
+    },
+    "treasure": {
+      "narration": "Entres na caverna devagarinho. O brilho vem de uma coroa dourada em cima de uma pedra. Mas ao lado dela está um pequeno dinossauro verde a dormir. É um bebé triceratops! Ele acorda e olha para ti com olhos sonolentos.",
+      "choices": [
+        {"text": "Pegar na coroa", "icon": "👑", "next": "ending_crown"},
+        {"text": "Acamar o bebé triceratops", "icon": "🤚", "next": "ending_friend"}
+      ]
+    },
+    "ending_coward": {
+      "narration": "Decides não entrar na caverna e voltas para casa. Foi uma aventura divertida, mas ficaste sempre a pensar o que estaria lá dentro. Fim. Queres jogar outra vez?",
+      "choices": [
+        {"text": "Jogar outra vez", "icon": "🔄", "next": "start"}
+      ]
+    },
+    "ending_crown": {
+      "narration": "Pegas na coroa dourada com cuidado para não acordar o bebé. Quando a tens na cabeça, sentes um poder mágico! Ficas a saber a linguagem dos dinossauros! Agora podes falar com todos eles. És o rei da floresta dos dinossauros! Fim. Queres jogar outra vez?",
+      "choices": [
+        {"text": "Jogar outra vez", "icon": "🔄", "next": "start"}
+      ]
+    },
+    "ending_friend": {
+      "narration": "Acaminhas o bebé triceratops suavemente. Ele faz um som fofinho e encosta-se a ti. A mãe dele aparece na entrada da caverna e vê que és amigo do bebé. Ela convida-te para viver com eles na floresta! Tu e o bebé triceratops ficam melhores amigos para sempre. Fim. Queres jogar outra vez?",
+      "choices": [
+        {"text": "Jogar outra vez", "icon": "🔄", "next": "start"}
+      ]
+    }
+  }
+}

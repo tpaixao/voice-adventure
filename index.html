@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aventuras Interativas</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Fredoka', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  user-select: none; -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+h1 {
+  font-size: 2.2em; color: #FFD700;
+  text-shadow: 3px 3px 0 #000, 6px 6px 20px rgba(0,0,0,0.5);
+  margin-bottom: 35px; text-align: center; padding: 0 20px;
+  animation: bounce 2.5s infinite;
+}
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.story-grid {
+  display: flex; flex-wrap: wrap; gap: 30px; align-items: center; justify-content: center;
+  max-width: 700px; padding: 20px;
+}
+
+.story-card {
+  font-family: 'Fredoka', sans-serif;
+  border: none; border-radius: 30px;
+  width: 280px; height: 280px;
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  box-shadow: 0 10px 0 rgba(0,0,0,0.3), 0 15px 40px rgba(0,0,0,0.4);
+  transition: all 0.2s ease;
+  opacity: 0; transform: scale(0.7);
+  animation: cardIn 0.6s forwards;
+  text-decoration: none;
+  position: relative; overflow: hidden;
+}
+.story-card:nth-child(1) { animation-delay: 0.1s; }
+.story-card:nth-child(2) { animation-delay: 0.25s; }
+.story-card:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes cardIn { to { opacity: 1; transform: scale(1); } }
+
+.story-card:active {
+  transform: scale(0.95);
+  box-shadow: 0 5px 0 rgba(0,0,0,0.3), 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.story-card.dino {
+  background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043);
+}
+.story-card.pokemon {
+  background: linear-gradient(135deg, #CC0000, #FF6600, #FFCC00);
+}
+.story-card.unicorn {
+  background: linear-gradient(135deg, #FF69B4, #DDA0DD, #B0E0E6);
+}
+
+.story-card .emoji {
+  font-size: 5em; line-height: 1;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  animation: floaty 3s ease-in-out infinite;
+}
+@keyframes floaty { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+
+.story-card .title {
+  font-size: 1.3em; font-weight: 700; color: white;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  text-align: center; padding: 0 10px;
+}
+
+/* Pulse hint */
+.story-card::after {
+  content: ''; position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border-radius: 34px; border: 3px solid rgba(255,255,255,0.2);
+  opacity: 0; animation: pulseRing 2.5s ease-out infinite; animation-delay: 1.5s;
+}
+@keyframes pulseRing { 0% { transform: scale(0.97); opacity: 0; } 50% { opacity: 0.5; } 100% { transform: scale(1.08); opacity: 0; } }
+</style>
+</head>
+<body>
+<h1>✨ Escolhe a tua Aventura ✨</h1>
+<div class="story-grid">
+  <a class="story-card dino" href="stories/dinosaurs/index.html">
+    <div class="emoji">🦕</div>
+    <div class="title">A Floresta dos Dinossauros</div>
+  </a>
+  <a class="story-card pokemon" href="stories/pokemon/index.html">
+    <div class="emoji">⚡</div>
+    <div class="title">A Aventura Pokémon</div>
+  </a>
+  <a class="story-card unicorn" href="stories/unicorns/index.html">
+    <div class="emoji">🦄</div>
+    <div class="title">O Unicórnio Arco-Íris</div>
+  </a>
+</div>
+</body>
+</html>

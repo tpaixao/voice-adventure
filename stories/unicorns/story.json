@@ -1,0 +1,117 @@
+{
+  "title": "O Unicórnio Arco-Íris",
+  "start": "start",
+  "prompt_text": "O que queres fazer?",
+  "nodes": {
+    "start": {
+      "narration": "Olá! Eu sou um unicórnio! Tenho um chifre mágico na cabeça e uma crina muito macia. Queres brincar comigo?",
+      "choices": [
+        {"text": "Sim, quero brincar!", "icon": "🎉", "next": "choose_color"},
+        {"text": "Dar um abraço ao unicórnio", "icon": "🤗", "next": "hug"}
+      ]
+    },
+    "hug": {
+      "narration": "O unicórnio dá-te um abração grande e quentinho! Ele é tão macio! Ficas muito feliz. Agora o unicórnio quer mostrar-te uma surpresa.",
+      "choices": [
+        {"text": "Ver a surpresa", "icon": "✨", "next": "choose_color"}
+      ]
+    },
+    "choose_color": {
+      "narration": "O unicórnio pergunta: De que cor queres que eu fique? Podes escolher!",
+      "choices": [
+        {"text": "Cor de rosa", "icon": "🌸", "next": "pink"},
+        {"text": "Cor azul", "icon": "💙", "next": "blue"},
+        {"text": "Cor amarela", "icon": "⭐", "next": "yellow"}
+      ]
+    },
+    "pink": {
+      "narration": "O unicórnio fica cor de rosa! Ele salta de alegria! A crina dele fica toda cheia de flores cor de rosa. Que bonito!",
+      "choices": [
+        {"text": "Ir brincar", "icon": "🎈", "next": "play"}
+      ]
+    },
+    "blue": {
+      "narration": "O unicórnio fica cor azul como o céu! A crina dele brilha como o mar. Ele faz um salto gracioso. Que lindo!",
+      "choices": [
+        {"text": "Ir brincar", "icon": "🎈", "next": "play"}
+      ]
+    },
+    "yellow": {
+      "narration": "O unicórnio fica cor amarela como o sol! A crina dele brilha muito. Ele parece uma estrela. Que bonito!",
+      "choices": [
+        {"text": "Ir brincar", "icon": "🎈", "next": "play"}
+      ]
+    },
+    "play": {
+      "narration": "O unicórnio leva-te para um campo cheio de flores coloridas. Há borboletas a voar e passarinhos a cantar. O que queres fazer?",
+      "choices": [
+        {"text": "Apanhar flores", "icon": "🌷", "next": "flowers"},
+        {"text": "Correr com o unicórnio", "icon": "🏃", "next": "run"},
+        {"text": "Ver as borboletas", "icon": "🦋", "next": "butterflies"}
+      ]
+    },
+    "flowers": {
+      "narration": "Apanhas flores vermelhas, amarelas e azuis. Fazes uma coroa de flores e pões na cabeça do unicórnio. Ele fica muito elegante! Ele diz: Obrigado!",
+      "choices": [
+        {"text": "Ir ver os amigos", "icon": "🐰", "next": "friends"}
+      ]
+    },
+    "run": {
+      "narration": "Corres com o unicórnio pelo campo! Ele corre muito rápido mas espera por ti. O vento bate no teu rosto. Estais a rir muito. Que divertido!",
+      "choices": [
+        {"text": "Ir ver os amigos", "icon": "🐰", "next": "friends"}
+      ]
+    },
+    "butterflies": {
+      "narration": "Olhas para as borboletas. Elas são lindas! Uma borboleta pousa no teu nariz. Faz cócegas! Rires-te muito. O unicórnio também ri.",
+      "choices": [
+        {"text": "Ir ver os amigos", "icon": "🐰", "next": "friends"}
+      ]
+    },
+    "friends": {
+      "narration": "O unicórnio apresenta-te os seus amigos! Há um coelhinho macio, uma estrelinha brilhante e uma nuvem fofa. Com quem queres brincar?",
+      "choices": [
+        {"text": "O coelhinho", "icon": "🐰", "next": "bunny"},
+        {"text": "A estrelinha", "icon": "⭐", "next": "star"},
+        {"text": "A nuvem fofa", "icon": "☁️", "next": "cloud"}
+      ]
+    },
+    "bunny": {
+      "narration": "O coelhinho é pequenino e muito macio! Ele mexe as orelhas para cima e para baixo. Faz cócegas no teu nariz! Todos se riem. O coelhinho dá-te um beijinho.",
+      "choices": [
+        {"text": "Ir dormir", "icon": "😴", "next": "sleep"}
+      ]
+    },
+    "star": {
+      "narration": "A estrelinha brilha mesmo muito! Ela dança no céu e deixa um rasto de luz. Tu e o unicórnio olham para ela e ficam muito felizes. A estrelinha diz: Tu és uma estrela também!",
+      "choices": [
+        {"text": "Ir dormir", "icon": "😴", "next": "sleep"}
+      ]
+    },
+    "cloud": {
+      "narration": "A nuvem é fofa e branca, como algodão. Sentas-te em cima dela. É super macia! A nuvem flutua devagarinho pelo céu. Tu e o unicórnio relaxam muito.",
+      "choices": [
+        {"text": "Ir dormir", "icon": "😴", "next": "sleep"}
+      ]
+    },
+    "sleep": {
+      "narration": "O sol está a pôr-se. O céu fica cor de laranja e rosa. O unicórnio está cansado de tanta brincadeira. Ele diz: Está na hora de descansar. O que queres fazer?",
+      "choices": [
+        {"text": "Adormecer com o unicórnio", "icon": "🌙", "next": "ending_sleep"},
+        {"text": "Cantar uma canção", "icon": "🎶", "next": "ending_song"}
+      ]
+    },
+    "ending_sleep": {
+      "narration": "Tu e o unicórnio adormecem juntos sob as estrelas. Ele põe a cabeça macia no teu colo. O céu está cheio de estrelinhas a brilhar. Boa noite, pequena. Sonhos lindos!",
+      "choices": [
+        {"text": "Jogar outra vez", "icon": "🔄", "next": "start"}
+      ]
+    },
+    "ending_song": {
+      "narration": "Cantas uma canção bonita para o unicórnio. Ele fecha os olhos e sorri. A canção faz as estrelas brilhar ainda mais. O unicórnio adormece feliz. Boa noite, pequena. Sonhos lindos!",
+      "choices": [
+        {"text": "Jogar outra vez", "icon": "🔄", "next": "start"}
+      ]
+    }
+  }
+}

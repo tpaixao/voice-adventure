@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Aventura Pokémon de Kanto</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Fredoka', sans-serif;
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  user-select: none; -webkit-tap-highlight-color: transparent;
+  overflow: hidden; transition: background 0.8s ease;
+}
+body.scene-fire     { background: linear-gradient(135deg, #8B0000, #FF4500, #FFD700); }
+body.scene-grass    { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043); }
+body.scene-water2   { background: linear-gradient(135deg, #006994, #0099CC, #66CCFF); }
+body.scene-rock     { background: linear-gradient(135deg, #696969, #808080, #A9A9A9); }
+body.scene-fight    { background: linear-gradient(135deg, #8B0000, #DC143C, #FF6347); }
+body.scene-gym      { background: linear-gradient(135deg, #4B0082, #7B68EE, #9370DB); }
+body.scene-ending   { background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347); }
+body.scene-default  { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043); }
+#game { width: 100%; max-width: 700px; padding: 20px; text-align: center; position: relative; z-index: 1; }
+.title-screen {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, #CC0000, #4B0082);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 10; transition: opacity 0.6s ease;
+}
+.title-screen h1 {
+  font-size: 2.5em; color: #FFCC00;
+  text-shadow: 3px 3px 0 #000, 6px 6px 20px rgba(0,0,0,0.5);
+  margin-bottom: 10px; animation: bounce 2s infinite; text-align: center; padding: 0 20px;
+}
+.title-screen .emoji-row { font-size: 5em; margin-bottom: 20px; }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+.start-btn {
+  font-family: 'Fredoka', sans-serif; font-size: 2em; font-weight: 700;
+  padding: 25px 60px; border: none; border-radius: 60px;
+  background: linear-gradient(135deg, #FFCC00, #FF6600); color: #1a1a2e;
+  cursor: pointer; box-shadow: 0 8px 0 #CC6600, 0 12px 30px rgba(0,0,0,0.4);
+  transition: all 0.15s ease;
+}
+.start-btn:active { transform: translateY(6px); box-shadow: 0 2px 0 #CC6600, 0 4px 15px rgba(0,0,0,0.3); }
+.scene-emoji { font-size: 5em; margin-bottom: 15px; animation: floaty 3s ease-in-out infinite; }
+@keyframes floaty { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+.narration-indicator {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 30px; border-radius: 50px;
+  background: rgba(255,255,255,0.25); backdrop-filter: blur(8px);
+  color: white; font-size: 1.2em; font-weight: 600; margin-bottom: 30px; transition: opacity 0.3s;
+}
+.narration-indicator.playing .wave { animation: soundWave 0.6s ease-in-out infinite alternate; }
+.narration-indicator .wave { font-size: 1.2em; }
+@keyframes soundWave { 0% { transform: scaleY(0.6); opacity: 0.7; } 100% { transform: scaleY(1.2); opacity: 1; } }
+.choices { display: flex; flex-direction: row; gap: 30px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.choice-btn {
+  font-family: 'Fredoka', sans-serif; border: none; border-radius: 50%;
+  width: 140px; height: 140px; background: rgba(255,255,255,0.95);
+  cursor: pointer; box-shadow: 0 8px 0 rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.35);
+  transition: all 0.2s ease; opacity: 0; transform: scale(0.5);
+  animation: choiceIn 0.5s forwards;
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.choice-btn:nth-child(1) { animation-delay: 0.1s; }
+.choice-btn:nth-child(2) { animation-delay: 0.25s; }
+.choice-btn:nth-child(3) { animation-delay: 0.4s; }
+.choice-btn:active { transform: scale(0.92); background: #FFD700; box-shadow: 0 3px 0 rgba(0,0,0,0.25), 0 5px 15px rgba(0,0,0,0.3); }
+@keyframes choiceIn { to { opacity: 1; transform: scale(1); } }
+.choice-btn .choice-icon { font-size: 4em; line-height: 1; }
+.choice-btn::after {
+  content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px;
+  border-radius: 50%; border: 4px solid rgba(255,255,255,0.3);
+  opacity: 0; animation: pulseRing 2s ease-out infinite; animation-delay: 1s;
+}
+@keyframes pulseRing { 0% { transform: scale(0.95); opacity: 0; } 50% { opacity: 0.6; } 100% { transform: scale(1.15); opacity: 0; } }
+.top-btn {
+  font-family: 'Fredoka', sans-serif; font-size: 1em; padding: 10px 20px;
+  border: 2px solid rgba(255,255,255,0.4); border-radius: 30px;
+  background: transparent; color: white; cursor: pointer; position: absolute; top: 20px; z-index: 5;
+  transition: all 0.2s;
+}
+.top-btn:active { background: rgba(255,255,255,0.2); }
+.hidden { display: none !important; }
+.fade-out { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body class="scene-grass">
+<div class="title-screen" id="titleScreen">
+  <div class="emoji-row">⚡🔥💧</div>
+  <h1>A Aventura Pokémon de Kanto</h1>
+  <button class="start-btn" onclick="startGame()">▶</button>
+</div>
+<div id="game" class="hidden">
+  <button class="top-btn" style="left:20px" onclick="goHome()">🏠</button>
+  <button class="top-btn" style="left:80px" onclick="replayNarration()">🔊</button>
+  <button class="top-btn" style="right:20px" onclick="startGame()">↺</button>
+  <div class="scene-emoji" id="sceneEmoji">⚡</div>
+  <div class="narration-indicator playing" id="narrIndicator">
+    <span class="wave">🎵</span><span>A ouvir...</span>
+  </div>
+  <div class="choices" id="choices"></div>
+</div>
+<script>
+let story=null, currentNode=null, currentNodeId=null, narrationAudio=null;
+const sceneMeta = {
+  start:{emoji:"🎮",bg:"scene-grass"},
+  choose_pikachu:{emoji:"⚡",bg:"scene-fire"}, choose_charmander:{emoji:"🔥",bg:"scene-fire"}, choose_squirtle:{emoji:"💧",bg:"scene-water2"},
+  forest:{emoji:"🌲",bg:"scene-grass"}, beach:{emoji:"🏖️",bg:"scene-water2"}, mountain:{emoji:"⛰️",bg:"scene-rock"}, river:{emoji:"🌊",bg:"scene-water2"},
+  caterpie:{emoji:"🐛",bg:"scene-grass"}, beedrill:{emoji:"🐝",bg:"scene-grass"},
+  krabby:{emoji:"🦀",bg:"scene-water2"}, shellder:{emoji:"🐚",bg:"scene-water2"},
+  geodude:{emoji:"🪨",bg:"scene-rock"}, machop:{emoji:"💪",bg:"scene-fight"},
+  magikarp:{emoji:"🐟",bg:"scene-water2"}, poliwag:{emoji:"🐸",bg:"scene-water2"},
+  gym:{emoji:"🏟️",bg:"scene-gym"},
+  battle_win:{emoji:"🏆",bg:"scene-ending"}, battle_smart:{emoji:"🧠",bg:"scene-ending"},
+};
+async function loadStory(){ if(!story){const r=await fetch('story.json');story=await r.json();} }
+function goHome(){ window.location.href='../index.html'; }
+async function startGame(){
+  await loadStory();
+  document.getElementById('titleScreen').classList.add('fade-out');
+  setTimeout(()=>{
+    document.getElementById('titleScreen').classList.add('hidden');
+    document.getElementById('game').classList.remove('hidden');
+    goToNode(story.start);
+  },600);
+}
+function goToNode(nodeId){
+  if(narrationAudio){narrationAudio.pause();narrationAudio=null;}
+  currentNodeId=nodeId; currentNode=story.nodes[nodeId];
+  const meta=sceneMeta[nodeId]||{emoji:"✨",bg:"scene-default"};
+  document.body.className=meta.bg;
+  document.getElementById('sceneEmoji').textContent=meta.emoji;
+  const indicator=document.getElementById('narrIndicator');
+  indicator.classList.remove('hidden','fade-out'); indicator.classList.add('playing');
+  document.getElementById('choices').innerHTML='';
+  narrationAudio=new Audio(`audio/${nodeId}.mp3`);
+  narrationAudio.play().catch(e=>console.warn('Audio play failed:',e));
+  narrationAudio.onended=()=>{indicator.classList.add('fade-out');setTimeout(()=>{indicator.classList.add('hidden');showChoices();},400);};
+  narrationAudio.onerror=()=>{setTimeout(()=>{indicator.classList.add('hidden');showChoices();},2000);};
+}
+function replayNarration(){ if(narrationAudio){narrationAudio.currentTime=0;narrationAudio.play().catch(()=>{});} else if(currentNodeId){goToNode(currentNodeId);} }
+function showChoices(){
+  const container=document.getElementById('choices'); container.innerHTML='';
+  currentNode.choices.forEach((choice,i)=>{
+    const btn=document.createElement('button'); btn.className='choice-btn';
+    btn.innerHTML=`<span class="choice-icon">${choice.icon||"👆"}</span>`;
+    btn.onclick=()=>{
+      btn.style.background='#FFD700'; btn.style.transform='scale(0.92)';
+      const choiceAudio=new Audio(`audio/${currentNodeId}_choice${i}.mp3`);
+      choiceAudio.onended=()=>{goToNode(choice.next);};
+      choiceAudio.onerror=()=>{setTimeout(()=>goToNode(choice.next),800);};
+      choiceAudio.play().catch(()=>{setTimeout(()=>goToNode(choice.next),800);});
+      document.querySelectorAll('.choice-btn').forEach(b=>b.style.pointerEvents='none');
+    };
+    container.appendChild(btn);
+  });
+}
+</script>
+</body>
+</html>

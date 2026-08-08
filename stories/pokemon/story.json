@@ -1,0 +1,131 @@
+{
+  "title": "A Aventura Pokémon de Kanto",
+  "start": "start",
+  "prompt_text": "O que queres fazer?",
+  "nodes": {
+    "start": {
+      "narration": "Era uma vez, no mundo maravilhoso dos Pokémon. Tu és um treinador Pokémon chamado André, e hoje começas a tua grande aventura! Mas antes de partirem, tens de escolher o teu primeiro Pokémon. O Professor Carvalho tem três Pokémon incríveis à tua espera.",
+      "choices": [
+        {"text": "Escolher o Pikachu", "icon": "⚡", "next": "choose_pikachu"},
+        {"text": "Escolher o Charmander", "icon": "🔥", "next": "choose_charmander"},
+        {"text": "Escolher o Squirtle", "icon": "💧", "next": "choose_squirtle"}
+      ]
+    },
+    "choose_pikachu": {
+      "narration": "Escolhes o Pikachu! Ele é amarelo e cheio de energia elétrica. Quando o vês, ele diz alegremente: Pika Pika! Ele salta para os teus braços e os vossos olhos brilham. Estais prontos para a aventura!",
+      "choices": [
+        {"text": "Ir para a floresta", "icon": "🌲", "next": "forest"},
+        {"text": "Ir para a praia", "icon": "🏖️", "next": "beach"}
+      ]
+    },
+    "choose_charmander": {
+      "narration": "Escolhes o Charmander! Ele é laranja e tem uma chama no fim da cauda. Quando o vês, ele diz alegremente: Char Char! A chama na cauda dele brilha com força. Estais prontos para a aventura!",
+      "choices": [
+        {"text": "Ir para a floresta", "icon": "🌲", "next": "forest"},
+        {"text": "Ir para a montanha", "icon": "⛰️", "next": "mountain"}
+      ]
+    },
+    "choose_squirtle": {
+      "narration": "Escolhes o Squirtle! Ele é azul e tem uma carapaça dura nas costas. Quando o vês, ele diz alegremente: Squirt Squirt! Ele salta de alegria. Estais prontos para a aventura!",
+      "choices": [
+        {"text": "Ir para a praia", "icon": "🏖️", "next": "beach"},
+        {"text": "Ir para o rio", "icon": "🌊", "next": "river"}
+      ]
+    },
+    "forest": {
+      "narration": "Entras na floresta. É escuro e húmido, com árvores enormes por todo o lado. De repente, ouves um som estranho nos arbustos. É um Caterpie verde a comer uma folha! Mas também ouves algo maior a mover-se mais à frente.",
+      "choices": [
+        {"text": "Aproximar do Caterpie", "icon": "🐛", "next": "caterpie"},
+        {"text": "Seguir o som mais forte", "icon": "👣", "next": "beedrill"}
+      ]
+    },
+    "beach": {
+      "narration": "Chegas à praia. A areia é quente e o mar é azul e brilhante. Vês um Krabby a correr pela areia com as suas pinças grandes, e no mar, um Shellder flutua calmamente. Que queres fazer?",
+      "choices": [
+        {"text": "Brincar com o Krabby", "icon": "🦀", "next": "krabby"},
+        {"text": "Nadar com o Shellder", "icon": "🐚", "next": "shellder"}
+      ]
+    },
+    "mountain": {
+      "narration": "Sobes a montanha. O caminho é pedregoso e íngreme. No topo, encontras um Geodude a dormir sobre uma pedra quente. Mais abaixo, vês um Machop a treinar os seus músculos. Que queres fazer?",
+      "choices": [
+        {"text": "Despertar o Geodude", "icon": "🪨", "next": "geodude"},
+        {"text": "Treinar com o Machop", "icon": "💪", "next": "machop"}
+      ]
+    },
+    "river": {
+      "narration": "Chegas a um rio cristalino que corre por entre pedras. Vês um Magikarp a saltar fora de água, sempre a saltar! E perto da margem, um Poliwag azul nada em círculos. Que queres fazer?",
+      "choices": [
+        {"text": "Saltar com o Magikarp", "icon": "🐟", "next": "magikarp"},
+        {"text": "Nadar com o Poliwag", "icon": "🐸", "next": "poliwag"}
+      ]
+    },
+    "caterpie": {
+      "narration": "Aproximas-te devagarinho do Caterpie. Ele para de comer e olha para ti com olhos curiosos. O teu Pokémon cheira-o e faz um som amigável! O Caterpie sorri e junta-se a vós. Agora tens um novo amigo Pokémon!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "beedrill": {
+      "narration": "Segues o som mais forte. De repente, um Beedrill enorme aparece! Ele tem aguilhões perigosos nas mãos e zune alto. Mas o teu Pokémon põe-se à frente para te proteger! O Beedrill vê a tua coragem e afasta-se. Foste muito corajoso!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "krabby": {
+      "narration": "Aproximas-te do Krabby. Ele levanta as pinças e meneia-as de um lado para o outro! Parece que quer lutar! O teu Pokémon prepara-se, mas o Krabby de repente faz uma dança engraçada na areia. Todos se riem! Vocês ficam amigos.",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "shellder": {
+      "narration": "Entras na água com o Shellder. Ele é uma concha roxa com uma pérola dentro. Quando te aproximas, ele abre a concha e mostra a pérola brilhante! É lindíssima! O Shellder deixa-te tocar na pérola, e sentes um poder mágico. Vocês ficam amigos!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "geodude": {
+      "narration": "Acordas o Geodude com cuidado. Ele acorda e olha para ti com olhos sonolentos. De repente, ele sorri! É uma rocha com braços e olhos! O teu Pokémon cumprimenta-o e eles tornam-se amigos. Agora tens um Pokémon rocha forte!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "machop": {
+      "narration": "Aproximas-te do Machop. Ele está a fazer flexões! Um, dois, três, quatro! Ele vê-te e faz um sorriso. Quer que treines com ele! O teu Pokémon também treina. Ficais todos mais fortes juntos!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "magikarp": {
+      "narration": "Ficas junto ao rio a ver o Magikarp a saltar. Splash, splash! Ele salta cada vez mais alto. De repente, ele salta tão alto que cai na tua mão! É pequeno e escorregadio. Todos se riem. O Magikarp é engraçado, mas um dia ele vai evoluir e ficar muito forte!",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "poliwag": {
+      "narration": "Nadas com o Poliwag. Ele é azul e tem uma espiral branca na barriga. Nada muito rápido! Vocês competem para ver quem é mais rápido. O Poliwag ganha, mas por pouco! Ele fica feliz e junta-se à tua equipa.",
+      "choices": [
+        {"text": "Continuar a aventura", "icon": "➡️", "next": "gym"}
+      ]
+    },
+    "gym": {
+      "narration": "Chegas ao Ginásio Pokémon! O Líder do Ginásio está à tua espera. Ele tem um Pokémon forte. É a tua primeira batalha de Ginásio! O Líder diz: Estás pronto, jovem treinador? Que queres fazer?",
+      "choices": [
+        {"text": "Lutar com coragem", "icon": "⚔️", "next": "battle_win"},
+        {"text": "Usar uma estratégia", "icon": "🧠", "next": "battle_smart"}
+      ]
+    },
+    "battle_win": {
+      "narration": "O teu Pokémon luta com toda a sua força! É uma batalha intensa. Ataques voam de um lado para o outro. Mas o teu Pokémon é mais corajoso e mais forte! Vence a batalha! O Líder do Ginásio entrega-te a tua primeira insígnia. És um verdadeiro treinador Pokémon!",
+      "choices": [
+        {"text": "Jogar outra vez", "icon": "🔄", "next": "start"}
+      ]
+    },
+    "battle_smart": {
+      "narration": "Usas a tua inteligência! Em vez de atacar diretamente, mandas o teu Pokémon desviar-se e atacar de lado. O Líder do Ginásio fica surpreendido! A tua estratégia funciona e o teu Pokémon vence! O Líder diz: Que inteligente! e entrega-te a tua primeira insígnia!",
+      "choices": [
+        {"text": "Jogar outra vez", "icon": "🔄", "next": "start"}
+      ]
+    }
+  }
+}
