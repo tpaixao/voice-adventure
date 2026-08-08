@@ -9,9 +9,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Fredoka', sans-serif;
-  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; display: flex;
   user-select: none; -webkit-tap-highlight-color: transparent;
-  overflow: hidden; transition: background 0.8s ease;
+  overflow-y: auto; transition: background 0.8s ease;
 }
 body.scene-fire     { background: linear-gradient(135deg, #8B0000, #FF4500, #FFD700); }
 body.scene-grass    { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043); }
@@ -21,7 +21,7 @@ body.scene-fight    { background: linear-gradient(135deg, #8B0000, #DC143C, #FF6
 body.scene-gym      { background: linear-gradient(135deg, #4B0082, #7B68EE, #9370DB); }
 body.scene-ending   { background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347); }
 body.scene-default  { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043); }
-#game { width: 100%; max-width: 700px; padding: 20px; text-align: center; position: relative; z-index: 1; }
+#game { width: 100%; max-width: 700px; padding: 20px; text-align: center; position: relative; z-index: 1; margin: auto; }
 .title-screen {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(135deg, #CC0000, #4B0082);

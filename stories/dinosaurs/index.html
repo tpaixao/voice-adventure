@@ -9,9 +9,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Fredoka', sans-serif;
-  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; display: flex;
   user-select: none; -webkit-tap-highlight-color: transparent;
-  overflow: hidden; transition: background 0.8s ease;
+  overflow-y: auto; transition: background 0.8s ease;
 }
 body.scene-start    { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043); }
 body.scene-brave    { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043); }
@@ -22,7 +22,7 @@ body.scene-cave     { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3
 body.scene-treasure { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); }
 body.scene-ending   { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #FFD700); }
 body.scene-default  { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc043); }
-#game { width: 100%; max-width: 700px; padding: 20px; text-align: center; position: relative; z-index: 1; }
+#game { width: 100%; max-width: 700px; padding: 20px; text-align: center; position: relative; z-index: 1; margin: auto; }
 .title-screen {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(135deg, #2d5a1e, #1a3a10);
