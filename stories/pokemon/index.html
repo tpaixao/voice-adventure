@@ -81,10 +81,14 @@ body.scene-default  { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc
   opacity: 0; animation: pulseRing 2s ease-out infinite; animation-delay: 1s;
 }
 @keyframes pulseRing { 0% { transform: scale(0.95); opacity: 0; } 50% { opacity: 0.6; } 100% { transform: scale(1.15); opacity: 0; } }
+.top-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 15px; margin-bottom: 10px;
+}
 .top-btn {
   font-family: 'Fredoka', sans-serif; font-size: 1em; padding: 10px 20px;
   border: 2px solid rgba(255,255,255,0.4); border-radius: 30px;
-  background: transparent; color: white; cursor: pointer; position: absolute; top: 20px; z-index: 5;
+  background: transparent; color: white; cursor: pointer;
   transition: all 0.2s;
 }
 .top-btn:active { background: rgba(255,255,255,0.2); }
@@ -99,9 +103,11 @@ body.scene-default  { background: linear-gradient(135deg, #2d5a1e, #4a8c2a, #7bc
   <button class="start-btn" onclick="startGame()">▶</button>
 </div>
 <div id="game" class="hidden">
-  <button class="top-btn" style="left:20px" onclick="goHome()">🏠</button>
-  <button class="top-btn" style="left:80px" onclick="replayNarration()">🔊</button>
-  <button class="top-btn" style="right:20px" onclick="startGame()">↺</button>
+  <div class="top-bar">
+    <button class="top-btn" onclick="goHome()">🏠</button>
+    <button class="top-btn" onclick="replayNarration()">🔊</button>
+    <button class="top-btn" onclick="startGame()">↺</button>
+  </div>
   <img class="scene-img" id="sceneImg" src="" alt="" style="display:none">
   <div class="scene-emoji" id="sceneEmoji">⚡</div>
   <div class="narration-indicator playing" id="narrIndicator">
